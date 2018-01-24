@@ -35,13 +35,10 @@ public class UserController {
         Gson gson = new Gson();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        if (!"root".equals(username)) {
+        if (!"root".equals(username) || !"root".equals(password)) {
             model.put("result", "fail");
-        }
-        if (!"root".equals(password)) {
-            model.put("result", "fail");
-        }
-        model.put("result", "success");
+        } else
+            model.put("result", "success");
         return new ModelAndView(new JsonContentTypeView(gson.toJson(model)));
     }
 }
