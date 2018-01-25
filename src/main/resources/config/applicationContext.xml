@@ -76,7 +76,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="multipleDataSource"/>
         <!-- 自动扫描mappers.xml文件 ，要加上classpath:com/...-->
-        <!--<property name="mapperLocations" value="classpath:com/laffey/mappers/*.xml"/>-->
+        <property name="mapperLocations" value="classpath:com/laffey/mappers/*.xml"/>
         <!-- mybatis配置文件 -->
         <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
     </bean>

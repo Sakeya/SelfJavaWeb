@@ -4,11 +4,25 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <settings>
-        <!--<setting name="cacheEnable" value="true"/>-->
+        <setting name="cacheEnable" value="true"/>
         <setting name="useGeneratedKeys" value="false"/>
         <setting name="logImpl" value="LOG4J"/><!--增加mybatis日志-->
     </settings>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!-- 配置数据库连接信息 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/SelfProjectDb"/>
+                <property name="username" value="root"/>
+                <property name="password" value="942698.Liu"/>
+            </dataSource>
+        </environment>
+    </environments>
+
     <mappers>
-        <!--<mapper resource="com/laffey/mappers/userMapper.xml" />-->
+        <mapper resource="com/laffey/mappers/userMapper.xml"/>
     </mappers>
 </configuration>
