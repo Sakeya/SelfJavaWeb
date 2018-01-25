@@ -1,45 +1,45 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.laffey.dao.NewsdetailMapper" >
-  <resultMap id="BaseResultMap" type="com.laffey.model.Newsdetail" >
-    <constructor >
-      <idArg column="news_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="breif" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="group_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="kind" jdbcType="INTEGER" javaType="java.lang.Integer" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laffey.dao.NewsdetailMapper">
+  <resultMap id="BaseResultMap" type="com.laffey.model.Newsdetail">
+    <constructor>
+      <idArg column="news_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="breif" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="group_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="kind" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.laffey.model.NewsdetailWithBLOBs" >
-    <constructor >
-      <idArg column="news_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="title" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="breif" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="group_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="kind" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="content" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
-      <arg column="images" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+  <resultMap id="ResultMapWithBLOBs" type="com.laffey.model.NewsdetailWithBLOBs">
+    <constructor>
+      <idArg column="news_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="breif" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="group_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="kind" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+      <arg column="images" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
     </constructor>
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -50,25 +50,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -79,43 +79,43 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     news_id, title, breif, group_id, kind
   </sql>
-  <sql id="Blob_Column_List" >
+  <sql id="Blob_Column_List">
     content, images
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.laffey.model.NewsdetailExample" >
+  <select id="selectByExampleWithBLOBs" parameterType="com.laffey.model.NewsdetailExample" resultMap="ResultMapWithBLOBs">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
     from NewsDetail
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.laffey.model.NewsdetailExample" >
+  <select id="selectByExample" parameterType="com.laffey.model.NewsdetailExample" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
     from NewsDetail
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
     ,
@@ -123,17 +123,17 @@
     from NewsDetail
     where news_id = #{newsId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from NewsDetail
     where news_id = #{newsId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.laffey.model.NewsdetailExample" >
+  <delete id="deleteByExample" parameterType="com.laffey.model.NewsdetailExample">
     delete from NewsDetail
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.laffey.model.NewsdetailWithBLOBs" >
+  <insert id="insert" parameterType="com.laffey.model.NewsdetailWithBLOBs">
     insert into NewsDetail (news_id, title, breif, 
       group_id, kind, content, 
       images)
@@ -141,91 +141,91 @@
       #{groupId,jdbcType=INTEGER}, #{kind,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}, 
       #{images,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.laffey.model.NewsdetailWithBLOBs" >
+  <insert id="insertSelective" parameterType="com.laffey.model.NewsdetailWithBLOBs">
     insert into NewsDetail
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="newsId != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="newsId != null">
         news_id,
       </if>
-      <if test="title != null" >
+      <if test="title != null">
         title,
       </if>
-      <if test="breif != null" >
+      <if test="breif != null">
         breif,
       </if>
-      <if test="groupId != null" >
+      <if test="groupId != null">
         group_id,
       </if>
-      <if test="kind != null" >
+      <if test="kind != null">
         kind,
       </if>
-      <if test="content != null" >
+      <if test="content != null">
         content,
       </if>
-      <if test="images != null" >
+      <if test="images != null">
         images,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="newsId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="newsId != null">
         #{newsId,jdbcType=INTEGER},
       </if>
-      <if test="title != null" >
+      <if test="title != null">
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="breif != null" >
+      <if test="breif != null">
         #{breif,jdbcType=VARCHAR},
       </if>
-      <if test="groupId != null" >
+      <if test="groupId != null">
         #{groupId,jdbcType=INTEGER},
       </if>
-      <if test="kind != null" >
+      <if test="kind != null">
         #{kind,jdbcType=INTEGER},
       </if>
-      <if test="content != null" >
+      <if test="content != null">
         #{content,jdbcType=LONGVARCHAR},
       </if>
-      <if test="images != null" >
+      <if test="images != null">
         #{images,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.laffey.model.NewsdetailExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.laffey.model.NewsdetailExample" resultType="java.lang.Integer">
     select count(*) from NewsDetail
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update NewsDetail
-    <set >
-      <if test="record.newsId != null" >
+    <set>
+      <if test="record.newsId != null">
         news_id = #{record.newsId,jdbcType=INTEGER},
       </if>
-      <if test="record.title != null" >
+      <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
       </if>
-      <if test="record.breif != null" >
+      <if test="record.breif != null">
         breif = #{record.breif,jdbcType=VARCHAR},
       </if>
-      <if test="record.groupId != null" >
+      <if test="record.groupId != null">
         group_id = #{record.groupId,jdbcType=INTEGER},
       </if>
-      <if test="record.kind != null" >
+      <if test="record.kind != null">
         kind = #{record.kind,jdbcType=INTEGER},
       </if>
-      <if test="record.content != null" >
+      <if test="record.content != null">
         content = #{record.content,jdbcType=LONGVARCHAR},
       </if>
-      <if test="record.images != null" >
+      <if test="record.images != null">
         images = #{record.images,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
+  <update id="updateByExampleWithBLOBs" parameterType="map">
     update NewsDetail
     set news_id = #{record.newsId,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
@@ -234,46 +234,46 @@
       kind = #{record.kind,jdbcType=INTEGER},
       content = #{record.content,jdbcType=LONGVARCHAR},
       images = #{record.images,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update NewsDetail
     set news_id = #{record.newsId,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
       breif = #{record.breif,jdbcType=VARCHAR},
       group_id = #{record.groupId,jdbcType=INTEGER},
       kind = #{record.kind,jdbcType=INTEGER}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.laffey.model.NewsdetailWithBLOBs" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.laffey.model.NewsdetailWithBLOBs">
     update NewsDetail
-    <set >
-      <if test="title != null" >
+    <set>
+      <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="breif != null" >
+      <if test="breif != null">
         breif = #{breif,jdbcType=VARCHAR},
       </if>
-      <if test="groupId != null" >
+      <if test="groupId != null">
         group_id = #{groupId,jdbcType=INTEGER},
       </if>
-      <if test="kind != null" >
+      <if test="kind != null">
         kind = #{kind,jdbcType=INTEGER},
       </if>
-      <if test="content != null" >
+      <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
       </if>
-      <if test="images != null" >
+      <if test="images != null">
         images = #{images,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where news_id = #{newsId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.laffey.model.NewsdetailWithBLOBs" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.laffey.model.NewsdetailWithBLOBs">
     update NewsDetail
     set title = #{title,jdbcType=VARCHAR},
       breif = #{breif,jdbcType=VARCHAR},
@@ -283,7 +283,297 @@
       images = #{images,jdbcType=LONGVARCHAR}
     where news_id = #{newsId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.laffey.model.Newsdetail" >
+  <update id="updateByPrimaryKey" parameterType="com.laffey.model.Newsdetail">
+    update NewsDetail
+    set title = #{title,jdbcType=VARCHAR},
+      breif = #{breif,jdbcType=VARCHAR},
+      group_id = #{groupId,jdbcType=INTEGER},
+      kind = #{kind,jdbcType=INTEGER}
+    where news_id = #{newsId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.laffey.model.Newsdetail">
+    <constructor>
+      <idArg column="news_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="breif" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="group_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="kind" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.laffey.model.NewsdetailWithBLOBs">
+    <constructor>
+      <idArg column="news_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="breif" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="group_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="kind" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="content" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+      <arg column="images" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    news_id, title, breif, group_id, kind
+  </sql>
+  <sql id="Blob_Column_List">
+    content, images
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.laffey.model.NewsdetailExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from NewsDetail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.laffey.model.NewsdetailExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from NewsDetail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from NewsDetail
+    where news_id = #{newsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from NewsDetail
+    where news_id = #{newsId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.laffey.model.NewsdetailExample">
+    delete from NewsDetail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.laffey.model.NewsdetailWithBLOBs">
+    insert into NewsDetail (news_id, title, breif, 
+      group_id, kind, content, 
+      images)
+    values (#{newsId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{breif,jdbcType=VARCHAR}, 
+      #{groupId,jdbcType=INTEGER}, #{kind,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}, 
+      #{images,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.laffey.model.NewsdetailWithBLOBs">
+    insert into NewsDetail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="newsId != null">
+        news_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="breif != null">
+        breif,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="kind != null">
+        kind,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="images != null">
+        images,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="newsId != null">
+        #{newsId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="breif != null">
+        #{breif,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="kind != null">
+        #{kind,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="images != null">
+        #{images,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.laffey.model.NewsdetailExample" resultType="java.lang.Integer">
+    select count(*) from NewsDetail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update NewsDetail
+    <set>
+      <if test="record.newsId != null">
+        news_id = #{record.newsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.breif != null">
+        breif = #{record.breif,jdbcType=VARCHAR},
+      </if>
+      <if test="record.groupId != null">
+        group_id = #{record.groupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.kind != null">
+        kind = #{record.kind,jdbcType=INTEGER},
+      </if>
+      <if test="record.content != null">
+        content = #{record.content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.images != null">
+        images = #{record.images,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update NewsDetail
+    set news_id = #{record.newsId,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      breif = #{record.breif,jdbcType=VARCHAR},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      kind = #{record.kind,jdbcType=INTEGER},
+      content = #{record.content,jdbcType=LONGVARCHAR},
+      images = #{record.images,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update NewsDetail
+    set news_id = #{record.newsId,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      breif = #{record.breif,jdbcType=VARCHAR},
+      group_id = #{record.groupId,jdbcType=INTEGER},
+      kind = #{record.kind,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.laffey.model.NewsdetailWithBLOBs">
+    update NewsDetail
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="breif != null">
+        breif = #{breif,jdbcType=VARCHAR},
+      </if>
+      <if test="groupId != null">
+        group_id = #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="kind != null">
+        kind = #{kind,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="images != null">
+        images = #{images,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where news_id = #{newsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.laffey.model.NewsdetailWithBLOBs">
+    update NewsDetail
+    set title = #{title,jdbcType=VARCHAR},
+      breif = #{breif,jdbcType=VARCHAR},
+      group_id = #{groupId,jdbcType=INTEGER},
+      kind = #{kind,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR},
+      images = #{images,jdbcType=LONGVARCHAR}
+    where news_id = #{newsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.laffey.model.Newsdetail">
     update NewsDetail
     set title = #{title,jdbcType=VARCHAR},
       breif = #{breif,jdbcType=VARCHAR},
