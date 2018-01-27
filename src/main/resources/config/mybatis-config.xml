@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <settings>
-        <setting name="cacheEnable" value="true"/>
+        <!--<setting name="cacheEnable" value="true"/>-->
         <setting name="useGeneratedKeys" value="false"/>
         <setting name="logImpl" value="LOG4J"/><!--增加mybatis日志-->
     </settings>
@@ -22,7 +22,10 @@
         </environment>
     </environments>
 
-    <mappers>
-        <mapper resource="com/laffey/mappers/userMapper.xml"/>
-    </mappers>
+    <!--<mappers>-->
+        <!--<mapper class="com.laffey.dao.UserinfoMapper"/>-->
+        <!--<mapper class="com.laffey.dao.NewsgroupMapper"/>-->
+        <!--<mapper class="com.laffey.dao.NewsdetailMapper"/>-->
+        <!--<mapper class="com.laffey.dao.AccountinfoMapper"/>-->
+    <!--</mappers>-->
 </configuration>

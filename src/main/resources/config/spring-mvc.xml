@@ -12,6 +12,8 @@
     <mvc:annotation-driven/>
 
     <!-- 使用注解的包，包括子集 -->
+    <context:component-scan base-package="com.laffey.service"/>
+    <context:component-scan base-package="com.laffey.dao"/>
     <context:component-scan base-package="com.laffey.controller"/>
 
     <!-- 解决js,css,images访问不到的问题-->
@@ -33,6 +35,15 @@
                 <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">/error/upload_error</prop>
             </props>
         </property>
+    </bean>
+
+    <bean id="RecentlyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" >
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+        <!-- 注意指定的映射器类必须是一个接口，而不是具体的实现类  -->
+        <property name="mapperInterface" value="com.laffey.dao.UserinfoMapper" />
+        <property name="mapperInterface" value="com.laffey.dao.AccountinfoMapper" />
+        <property name="mapperInterface" value="com.laffey.dao.NewsdetailMapper" />
+        <property name="mapperInterface" value="com.laffey.dao.NewsgroupMapper" />
     </bean>
 
     <!-- freemarker配置资源文件引入-->
